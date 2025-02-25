@@ -1,16 +1,12 @@
-# ==========================
-# 🔧 IMPOSTAZIONI DI DEFAULT
-# ==========================
 - defaults:
     link:
       relink: true    #  Se esistono link simbolici, sovrascrivili automaticamente senza errori.
 
-# ==========================
-#  PULIZIA DELLE CARTELLE
-# ==========================
 - clean: ['~']
-# - link:
+
+- link:
     # ~/.config/helix: helix
+    ~/.zshrc: zshrc
 
 - create:
     - ~/work                
