@@ -5,8 +5,8 @@
 - clean: ['~']
 
 - link:
-    # ~/.config/helix: helix
-    ~/.zshrc: zshrc
+    ~/.zshrc:
+    ~/.gitconfig:    
 
 - create:
     - ~/work                
