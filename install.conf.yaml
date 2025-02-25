@@ -1,0 +1,24 @@
+# ==========================
+# 🔧 IMPOSTAZIONI DI DEFAULT
+# ==========================
+- defaults:
+    link:
+      relink: true    #  Se esistono link simbolici, sovrascrivili automaticamente senza errori.
+
+# ==========================
+#  PULIZIA DELLE CARTELLE
+# ==========================
+- clean: ['~']
+# - link:
+    # ~/.config/helix: helix
+
+- create:
+    - ~/work                
+
+# ==========================
+# 🖇️ COMANDI SHELL POST-INSTALLAZIONE
+# ==========================
+# - shell:
+    # - [git submodule update --init --recursive, Installing submodules]
+
+    # - [echo 'Dotbot setup completo! ', Setup completed message]
