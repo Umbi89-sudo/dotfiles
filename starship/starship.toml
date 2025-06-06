@@ -1,0 +1,268 @@
+# ==========================
+# 󰣐 CONFIGURAZIONE GENERALE
+# ==========================
+
+# Non aggiunge una nuova riga tra l'output dei comandi e il prompt
+add_newline = false
+
+# Timeout ridotto per migliori performance (500ms invece di 1000ms)
+command_timeout = 500
+
+
+# ==========================
+# 󰸌 STRUTTURA DEL PROMPT
+# ==========================
+
+# Prompt a sinistra: informazioni essenziali ottimizzate per performance
+format = """$os$username$hostname$directory$git_branch$git_status$python$nodejs$docker_context$kubernetes$jobs$status$cmd_duration"""
+
+# Prompt a destra: informazioni secondarie con batteria intelligente
+right_format = """$shlvl$battery$time"""
+
+
+# ==========================
+# 󱐋 PERSONALIZZAZIONE PROMPT
+# ==========================
+
+# Simboli di default all'inizio del prompt (come > o $)
+[character]
+success_symbol = ''   # Niente simbolo se l'ultimo comando ha avuto successo
+error_symbol = ''     # Niente simbolo se l'ultimo comando ha generato errore
+
+
+# ==========================
+# 󰊠 SISTEMA OPERATIVO
+# ==========================
+
+# Mostra l'icona del sistema operativo
+[os]
+format = '[$symbol](bold white) '   # Colore bianco in grassetto per l'icona
+disabled = false                     # Modulo attivo
+
+# Simboli personalizzati per diversi sistemi operativi
+[os.symbols]
+Windows = ' '   # Windows
+Arch = '󰣇'       # Arch Linux
+Ubuntu = ''     # Ubuntu
+Macos = '󰀵'       # macOS
+
+
+# ==========================
+# 󰀄 INFORMAZIONI UTENTE
+# ==========================
+
+# Mostra il nome utente
+[username]
+style_user = 'white bold'            # Utente normale: bianco in grassetto
+style_root = 'black bold'            # Utente root: nero in grassetto
+format = '[$user]($style) '          # Formato della visualizzazione
+disabled = false                     # Sempre attivo
+show_always = true                   # Mostrato anche se non in sessione SSH
+
+
+# ==========================
+# 󰇧 NOME HOST
+# ==========================
+
+# Mostra il nome dell'host, utile per sessioni SSH o ambienti remoti
+[hostname]
+ssh_only = false                     # Mostrato anche in locale
+format = 'on [$hostname](bold yellow) '  # Giallo in grassetto
+disabled = false
+
+
+# ==========================
+# 󱃾  KUBERNETES CONTEXT
+# ==========================
+
+# Mostra il contesto Kubernetes solo quando rilevante
+[kubernetes]
+format = 'via [󱃾 $context\($namespace\)](bold purple) '  # Viola in grassetto
+disabled = false
+detect_files = ["k8s", "kustomization.yaml", "Chart.yaml"]
+detect_folders = ["k8s"]
+
+
+# ==========================
+# 󰉋 DIRECTORY CORRENTE
+# ==========================
+
+[directory]
+truncation_length = 4                # Mostra le ultime 4 directory per migliore contesto
+fish_style_pwd_dir_length = 1        # Abbrevia directory intermedie ad 1 carattere
+truncation_symbol = '…/'             # Simbolo per indicare truncamento
+home_symbol = '󰋜 ~'                  # Icona per la home directory
+read_only_style = '197'              # Colore se la directory è di sola lettura
+read_only = '  '                    # Simbolo lucchetto per directory di sola lettura
+format = 'at [$path]($style)[$read_only]($read_only_style) '
+repo_root_style = 'bold cyan'        # Evidenzia la root del repository
+
+
+# ==========================
+# 󰊢 BRANCH E STATO GIT
+# ==========================
+
+# Mostra il branch Git corrente
+[git_branch]
+symbol = ' '                        # Icona per il branch Git
+format = 'via [$symbol$branch]($style)'
+truncation_symbol = '…/'             # Troncamento branch lungo
+style = 'bold green'                 # Verde in grassetto
+
+# Mostra lo stato del repository Git (ottimizzato per performance)
+[git_status]
+format = '([ \( $all_status$ahead_behind\)]($style) )'
+style = 'bold green'
+# Indicatori semplificati per migliori performance
+conflicted = '[󰌗 ${count}](red) '        # Conflitti
+up_to_date = ''                          # Nasconde "up-to-date" per ridurre clutter
+untracked = '[󰋗 ${count}](red) '         # File non tracciati
+ahead = ' ↑${count}'                     # Commit in avanti (simbolo semplice)
+diverged = ' ↑${ahead_count} ↓${behind_count}'  # Divergenza
+behind = ' ↓${count}'                    # Commit indietro (simbolo semplice)
+stashed = '[󰏗 ${count}](cyan) '          # Stash
+modified = '[󰛿 ${count}](yellow) '       # Modifiche
+staged = '[󰐗 ${count}](green) '          # File in stage
+renamed = '[󱍸 ${count}](yellow) '        # File rinominati
+deleted = '[󰍶 ${count}](red) '           # File cancellati
+
+# ==========================
+# 🚀 OTTIMIZZAZIONI GIT AVANZATE (OPZIONALI)
+# ==========================
+# 
+# Per repository molto grandi, decommenta le seguenti opzioni per migliorare le performance:
+#
+# [git_status]
+# ignore_submodules = true           # Ignora i submoduli per velocità
+# ahead_behind = false               # Disabilita il conteggio commit avanti/indietro
+# 
+# [git_branch]  
+# truncation_length = 20             # Limita la lunghezza del nome branch
+#
+# Per repository estremamente grandi (>10k file), considera:
+# [git_status]
+# disabled = true                    # Disabilita completamente git_status
+#
+# Oppure usa solo indicatori essenziali:
+# [git_status]
+# format = '[$modified$staged$untracked]($style) '
+# conflicted = ""
+# ahead = ""  
+# behind = ""
+# diverged = ""
+# stashed = ""
+# renamed = ""
+# deleted = ""
+
+# ==========================
+# 󰞷 LIVELLO SHELL (SHLVL)
+# ==========================
+
+# Mostra il livello corrente della shell (solo se > 1 per ridurre clutter)
+[shlvl]
+format = '[$shlvl](bold cyan) '  # Cyan in grassetto
+disabled = false
+threshold = 2                    # Mostra solo se livello shell > 1
+
+
+# ==========================
+# 󰥔 ORARIO
+# ==========================
+
+# Mostra l'orario corrente sul lato destro del prompt
+[time]
+disabled = false
+format = '[$time](bold yellow)'        # Giallo in grassetto
+time_format = "%H:%M:%S"               # Formato 24h con secondi
+
+# ==========================
+# 󰔟 DURATA COMANDI
+# ==========================
+
+# Mostra la durata dei comandi che impiegano più di 2 secondi
+[cmd_duration]
+min_time = 2000                      # Mostra solo per comandi che durano più di 2 secondi
+format = '[󰔟 $duration]($style) '    # Formattazione con icona di timer
+style = 'yellow'                     # Colore giallo
+
+# ==========================
+# 󰁹 STATO BATTERIA
+# ==========================
+
+[battery]
+full_symbol = "󰁹"                   # Batteria piena
+charging_symbol = "󰂄"                # In carica
+discharging_symbol = "󰂃"            # In scarica
+format = '[$symbol $percentage]($style) '
+
+# Mostra batteria solo quando rilevante (ottimizzato per macOS)
+[[battery.display]]
+threshold = 15                       # Se < 15% (critico)
+style = 'red bold'                   # Rosso in grassetto
+
+[[battery.display]]
+threshold = 50                       # Se < 50% (attenzione)
+style = 'yellow bold'                # Giallo in grassetto
+
+[[battery.display]]
+threshold = 85                       # Se < 85% (normale)
+style = 'green'                      # Verde
+
+# ==========================
+# 󰅗 STATO ULTIMO COMANDO
+# ==========================
+
+[status]
+format = '[$symbol $status]($style) '  # Formato con simbolo e codice
+symbol = "󰅗"                        # Simbolo X rosso per errori
+disabled = false                     # Attivo
+map_symbol = true                    # Usa simboli per stati comuni
+
+# ==========================
+# 󰒋 PROCESSI IN BACKGROUND
+# ==========================
+
+[jobs]
+symbol = "󰒋"                        # Simbolo ingranaggio per i job
+format = '[${symbol} ${number}](bold blue) '  # Formato con numero di job
+threshold = 1                        # Mostra solo se ci sono almeno 1 job
+disabled = false                     # Attivo
+
+# ==========================
+# 󰏓 MODULI LINGUAGGI DI PROGRAMMAZIONE (OTTIMIZZATI)
+# ==========================
+
+# Moduli disabilitati per performance (non utilizzati)
+[vagrant]
+disabled = true
+
+[helm]
+disabled = true
+
+[ruby]
+disabled = true  # Non utilizzato attivamente
+
+[terraform]
+disabled = true  # Non installato nel sistema
+
+# Docker context (abilitato perché Docker è installato)
+[docker_context]
+format = '[󰡨 $context](bold blue) '
+disabled = false
+only_with_files = true  # Mostra solo quando ci sono file Docker
+
+# Python (principale linguaggio di sviluppo)
+[python]
+format = '[󰌠 $version](bold blue) '
+detect_files = ["pyproject.toml", "requirements.txt", "setup.py", "Pipfile", ".python-version"]
+detect_folders = [".venv", "venv", "__pycache__"]
+python_binary = ["python3", "python"]
+disabled = false
+
+# Node.js (con supporto NVM ottimizzato)
+[nodejs]
+format = '[󰎙 $version](bold green) '
+detect_files = ["package.json", ".nvmrc", ".node-version"]
+detect_folders = ["node_modules"]
+not_capable_style = "bold red"
+disabled = false

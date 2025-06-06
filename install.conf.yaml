@@ -7,14 +7,19 @@
 - link:
     ~/.zshrc: zshrc
     ~/.gitconfig: gitconfig
+    ~/.zshenv: zshenv
+    ~/.config/starship:
+      path: starship/
+      create: true
 
 - create:
-    - ~/work                
+    - ~/work
+    - ~/.config
 
 # ==========================
-# 🖇️ COMANDI SHELL POST-INSTALLAZIONE
+# 🖇️ COMANDI SHELL POST-INSTALLAZIONE  
 # ==========================
 # - shell:
     # - [git submodule update --init --recursive, Installing submodules]
-
+    
     # - [echo 'Dotbot setup completo! ', Setup completed message]
