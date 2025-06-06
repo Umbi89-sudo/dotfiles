@@ -5,8 +5,8 @@
 - clean: ['~']
 
 - link:
-    ~/.zshrc:
-    ~/.gitconfig:    
+    ~/.zshrc: zshrc
+    ~/.gitconfig: gitconfig
 
 - create:
     - ~/work                
