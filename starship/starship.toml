@@ -129,14 +129,14 @@ deleted = '[󰍶 ${count}](red) '           # File cancellati
 # ==========================
 # 🚀 OTTIMIZZAZIONI GIT AVANZATE (OPZIONALI)
 # ==========================
-# 
+#
 # Per repository molto grandi, decommenta le seguenti opzioni per migliorare le performance:
 #
 # [git_status]
 # ignore_submodules = true           # Ignora i submoduli per velocità
 # ahead_behind = false               # Disabilita il conteggio commit avanti/indietro
-# 
-# [git_branch]  
+#
+# [git_branch]
 # truncation_length = 20             # Limita la lunghezza del nome branch
 #
 # Per repository estremamente grandi (>10k file), considera:
@@ -147,7 +147,7 @@ deleted = '[󰍶 ${count}](red) '           # File cancellati
 # [git_status]
 # format = '[$modified$staged$untracked]($style) '
 # conflicted = ""
-# ahead = ""  
+# ahead = ""
 # behind = ""
 # diverged = ""
 # stashed = ""
@@ -255,7 +255,8 @@ only_with_files = true  # Mostra solo quando ci sono file Docker
 [python]
 format = '[󰌠 $version](bold blue) '
 detect_files = ["pyproject.toml", "requirements.txt", "setup.py", "Pipfile", ".python-version"]
-detect_folders = [".venv", "venv", "__pycache__"]
+detect_folders = []  # Nessuna cartella attiva Python automaticamente
+detect_extensions = ["py"]  # Solo quando ci sono file .py
 python_binary = ["python3", "python"]
 disabled = false
 

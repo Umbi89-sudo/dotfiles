@@ -3,7 +3,7 @@
 # ==========================
 
 # Editor di default (usato da git commit, crontab, ecc.)
-export EDITOR='helix'
+export EDITOR='hx'
 export GIT_EDITOR="$EDITOR"
 
 # Disabilita le analytics di Homebrew

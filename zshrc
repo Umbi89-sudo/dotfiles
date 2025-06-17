@@ -69,16 +69,31 @@ function nvm_auto_load() {
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
     export NVM_LOADED=1
   fi
-  # Esegui il comando originale con tutti i suoi argomenti
-  "$@"
+  # Esegui il comando originale usando il PATH
+  local cmd="$1"
+  shift
+  command "$cmd" "$@"
 }
 
 # Funzioni wrapper per comandi Node.js
 function node() { nvm_auto_load node "$@"; }
 function npm() { nvm_auto_load npm "$@"; }
-function nvm() { nvm_auto_load nvm "$@"; }
 function yarn() { nvm_auto_load yarn "$@"; }
 function pnpm() { nvm_auto_load pnpm "$@"; }
+
+# NVM command requires special handling
+function nvm() {
+  if [[ ! -v NVM_LOADED ]]; then
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    export NVM_LOADED=1
+    # After loading, nvm function is now available
+    nvm "$@"
+  else
+    # NVM is already loaded, call it directly
+    command nvm "$@" 2>/dev/null || { [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm "$@"; }
+  fi
+}
 
 # ==========================
 # 📌 COMANDI UTILI
@@ -105,7 +120,20 @@ alias gst='git status -sb'
 
 # Quick system info
 alias sysinfo='fastfetch'
-alias ports='netstat -tuln | grep LISTEN'
+alias ports='netstat -an | grep LISTEN'
+
+# Git enhanced tools
+alias ggui='gitui'
+alias glog='gitui'
+
+# Performance testing
+alias bench='hyperfine'
+
+# JSON processing
+alias jsonpp='jq .'
+
+# Quick help
+alias help='tldr'
 
 # ==========================
 # 📌 FUNZIONI
