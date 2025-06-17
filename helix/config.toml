@@ -1,0 +1,44 @@
+# ==========================
+# 🎨 TEMA DI HELIX
+# ==========================
+theme = "onedark"  # Tema scuro e leggibile
+
+# ==========================
+# 📝 IMPOSTAZIONI DELL'EDITOR
+# ==========================
+[editor]
+line-number = "absolute"     # Numeri di riga assoluti per navigazione più intuitiva
+mouse = true                 # Abilita supporto completo al mouse
+cursorline = true            # Evidenzia riga corrente
+cursorcolumn = true          # Evidenzia colonna corrente
+auto-save = true             # Salvataggio automatico dei file
+bufferline = "always"        # Mostra sempre la barra dei buffer aperti
+
+# ==========================
+# ⚡ BARRA DI STATO
+# ==========================
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"               # Separatore visivo chiaro
+
+# ==========================
+# 🎹 MAPPATURE DEI TASTI (Keybindings)
+# ==========================
+[keys.normal]
+"C-s" = ":w"    # Ctrl + S per salvare
+"C-q" = ":q"    # Ctrl + Q per chiudere il buffer
+
+# ==========================
+# 📏 GUIDE ALL'INDENTAZIONE
+# ==========================
+[editor.indent-guides]
+render = true                # Mantiene attive le guide di indentazione
+character = "│"              # Carattere semplice e chiaro per la guida
+
+# ==========================
+# 🚀 IMPOSTAZIONI LSP
+# ==========================
+[editor.lsp]
+display-inlay-hints = true   # Mostra suggerimenti in-linea per coding più efficace

@@ -1,25 +1,49 @@
 - defaults:
     link:
-      relink: true    #  Se esistono link simbolici, sovrascrivili automaticamente senza errori.
+      relink: true #  Se esistono link simbolici, sovrascrivili automaticamente senza errori.
+      create: true #  Crea directory se non esistono
 
-- clean: ['~']
+- clean: ["~"]
 
 - link:
+    # Shell
     ~/.zshrc: zshrc
-    ~/.gitconfig: gitconfig
     ~/.zshenv: zshenv
+
+    # Git
+    ~/.gitconfig: gitconfig
+
+    # Editor
+    ~/.config/helix/config.toml: helix/config.toml
+
+    # Terminal & Prompt
     ~/.config/starship:
       path: starship/
       create: true
 
+    # SSH
+    ~/.ssh/config:
+      path: ssh/config
+      create: true
+      permissions: "600"
+
+    # System Monitoring
+    ~/.config/htop/htoprc: htop/htoprc
+
+    # Terminal Emulator
+    ~/.config/waveterm/settings.json: waveterm/settings.json
+
+    # Password Manager
+    ~/.config/op/config:
+      path: op/config
+      permissions: "600"
+
 - create:
     - ~/work
     - ~/.config
+    - ~/.ssh
+    - ~/.config/nnn
 
-# ==========================
-# 🖇️ COMANDI SHELL POST-INSTALLAZIONE  
-# ==========================
-# - shell:
-    # - [git submodule update --init --recursive, Installing submodules]
-    
-    # - [echo 'Dotbot setup completo! ', Setup completed message]
+- shell:
+    - [chmod 700 ~/.ssh, Securing SSH directory]
+    - [echo 'Dotbot setup completo! ✅', Setup completed message]
