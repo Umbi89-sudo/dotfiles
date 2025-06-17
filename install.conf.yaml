@@ -2,6 +2,7 @@
     link:
       relink: true #  Se esistono link simbolici, sovrascrivili automaticamente senza errori.
       create: true #  Crea directory se non esistono
+      force: true #  Sovrascrive file esistenti con i link simbolici
 
 - clean: ["~"]
 
