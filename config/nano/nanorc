@@ -1,0 +1,61 @@
+# ==========================
+# 📝 NANO CONFIGURATION
+# ==========================
+# Configurazione per nano editor
+
+# ==========================
+# 🎨 COLORI
+# ==========================
+set titlecolor brightwhite,blue
+set statuscolor brightwhite,green
+set selectedcolor brightwhite,magenta
+set numbercolor cyan
+set keycolor cyan
+set functioncolor green
+
+# ==========================
+# 📄 SYNTAX HIGHLIGHTING
+# ==========================
+# Include tutti i file di syntax highlighting di Homebrew
+include "/opt/homebrew/share/nano/*.nanorc"
+
+# ==========================
+# ⚙️ COMPORTAMENTO EDITOR
+# ==========================
+# Dimensione tab e conversione in spazi
+set tabsize 4
+set tabstospaces
+
+# Interfaccia migliorata
+set linenumbers
+set mouse
+set smooth
+set softwrap
+
+# Backup e sicurezza
+set backup
+set backupdir "~/.nano/backups"
+
+# Ricerca migliorata
+set casesensitive
+set regexp
+
+# Navigazione
+set constantshow
+set quickblank
+
+# ==========================
+# 🔧 FUNZIONALITÀ AVANZATE
+# ==========================
+# Undo multipli
+set multibuffer
+set suspend
+
+# Auto-indentazione
+set autoindent
+
+# Mostra spazi bianchi
+set whitespace "»·"
+
+# Supporto UTF-8
+set utf8
