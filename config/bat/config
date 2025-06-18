@@ -3,8 +3,8 @@
 # ==========================
 # Configurazione per bat - un clone di cat con syntax highlighting
 
-# Tema (Catppuccin Mocha per un look moderno e scuro)
---theme="Catppuccin-mocha"
+# Tema (Dracula per un look moderno e scuro)
+--theme="Dracula"
 
 # Stile di output
 --style="numbers,changes,header"
@@ -22,6 +22,3 @@
 --map-syntax="Brewfile:Ruby"
 --map-syntax="*.zshrc:Bash"
 --map-syntax="*.zshenv:Bash"
-
-# Mostra caratteri non stampabili
---show-all
