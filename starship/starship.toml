@@ -41,7 +41,7 @@ disabled = false                     # Modulo attivo
 
 # Simboli personalizzati per diversi sistemi operativi
 [os.symbols]
-Windows = ' '   # Windows
+Windows = ''   # Windows
 Arch = '󰣇'       # Arch Linux
 Ubuntu = ''     # Ubuntu
 Macos = '󰀵'       # macOS
@@ -105,7 +105,7 @@ repo_root_style = 'bold cyan'        # Evidenzia la root del repository
 # Mostra il branch Git corrente
 [git_branch]
 symbol = ' '                        # Icona per il branch Git
-format = 'via [$symbol$branch]($style)'
+format = 'via [$symbol$branch]($style) '
 truncation_symbol = '…/'             # Troncamento branch lungo
 style = 'bold green'                 # Verde in grassetto
 
@@ -231,19 +231,6 @@ disabled = false                     # Attivo
 # ==========================
 # 󰏓 MODULI LINGUAGGI DI PROGRAMMAZIONE (OTTIMIZZATI)
 # ==========================
-
-# Moduli disabilitati per performance (non utilizzati)
-[vagrant]
-disabled = true
-
-[helm]
-disabled = true
-
-[ruby]
-disabled = true  # Non utilizzato attivamente
-
-[terraform]
-disabled = true  # Non installato nel sistema
 
 # Docker context (abilitato perché Docker è installato)
 [docker_context]
