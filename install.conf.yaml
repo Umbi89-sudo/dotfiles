@@ -13,6 +13,8 @@
 
     # Git
     ~/.gitconfig: gitconfig
+    ~/.config/git/delta.gitconfig: config/git/delta.gitconfig
+    ~/.config/lazygit/config.yml: config/lazygit/config.yml
 
     # Editor
     ~/.config/helix/config.toml: helix/config.toml
@@ -23,6 +25,8 @@
       path: starship/
       create: true
     ~/.config/bat/config: config/bat/config
+    ~/.config/fzf/fzf.zsh: config/fzf/fzf.zsh
+    ~/.config/ripgrep/rgignore: config/ripgrep/rgignore
 
     # SSH
     ~/.ssh/config:
@@ -41,11 +45,12 @@
       path: op/config
       permissions: "600"
 
+    # Antivirus
+    ~/.config/clamav/clamd.conf: config/clamav/clamd.conf
+    ~/.config/clamav/freshclam.conf: config/clamav/freshclam.conf
+
     # VS Code
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
-    ~/Library/Application Support/Code/User/keybindings.json:
-      path: vscode/keybindings.json
-      if: "[ -f vscode/keybindings.json ]"
 
 - create:
     - ~/work

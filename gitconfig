@@ -1,9 +1,12 @@
+# Include delta configuration
+[include]
+	path = ~/.config/git/delta.gitconfig
+
 [user]
 	name = Umberto Vanucci
 	email = 198199286+Umbi89-sudo@users.noreply.github.com
 
 [core]
-	pager = delta
 	editor = hx
 	autocrlf = input
 	whitespace = trailing-space,space-before-tab
@@ -21,21 +24,6 @@
 [fetch]
 	prune = true
 
-[merge]
-	tool = delta
-	conflictstyle = diff3
-
-[diff]
-	tool = delta
-	colorMoved = default
-
-[delta]
-	navigate = true
-	light = false
-	side-by-side = true
-	line-numbers = true
-	syntax-theme = Dracula
-
 [status]
 	showUntrackedFiles = all
 
@@ -43,17 +31,52 @@
 	abbrevCommit = true
 
 [alias]
+	# Status
 	st = status -sb
+	s = status -s
+
+	# Checkout
 	co = checkout
+	cob = checkout -b
+
+	# Branch
 	br = branch
+	bra = branch -a
+	brd = branch -d
+
+	# Commit
 	ci = commit
 	ca = commit -a
 	cm = commit -m
 	cam = commit -am
+	amend = commit --amend
+
+	# Reset
 	undo = reset --soft HEAD~1
+	unstage = reset HEAD --
+
+	# Log
 	logline = log --oneline --graph --decorate --all
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	last = log -1 HEAD
+
+	# Diff
+	d = diff
+	dc = diff --cached
+	ds = diff --staged
+
+	# Remote
+	r = remote -v
+
+	# Stash
+	sl = stash list
+	sa = stash apply
+	ss = stash save
+
+	# Utils
 	visual = !gitk
+	aliases = config --get-regexp alias
+	whoami = config user.email
 
 [color]
 	ui = auto

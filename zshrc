@@ -27,6 +27,9 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 # Configura bat come pager per le pagine man con colori
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
+# Configura ripgrep per usare il file di ignore globale
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/rgignore"
+
 # Se fzf è installato in /opt/homebrew/opt/fzf/bin, assicurati sia nel PATH.
 if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
   PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
@@ -38,8 +41,14 @@ fi
 # Carica le funzionalità di fzf solo se la shell è interattiva.
 
 if [[ $- == *i* ]]; then
-  source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"    # Keybindings (Ctrl+T, Ctrl+R, ecc.)
-  source "/opt/homebrew/opt/fzf/shell/completion.zsh"      # Completamenti fuzzy
+  # Carica configurazione FZF avanzata se esiste
+  [[ -f "$HOME/.config/fzf/fzf.zsh" ]] && source "$HOME/.config/fzf/fzf.zsh"
+
+  # Fallback alle configurazioni base se la configurazione avanzata non esiste
+  if [[ ! -f "$HOME/.config/fzf/fzf.zsh" ]]; then
+    source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"    # Keybindings (Ctrl+T, Ctrl+R, ecc.)
+    source "/opt/homebrew/opt/fzf/shell/completion.zsh"      # Completamenti fuzzy
+  fi
 fi
 
 # ==========================
@@ -200,7 +209,7 @@ function myip() {
 # Alias e funzioni per strumenti di sicurezza
 
 # Alias per gestire ClamAV in modo efficiente
-alias clamav="$HOME/clamav-manager.sh"
+alias clamav="$HOME/dotfiles/scripts/clamav-manager.sh"
 
 # ==========================
 # 📌 PLUGIN OPZIONALI (Autosuggestions e Syntax Highlighting)
