@@ -88,12 +88,17 @@ L'installer:
 dotfiles/
 ├── config/           # Configurazioni varie
 │   ├── bat/         # Bat (cat migliorato)
-│   └── nano/        # Nano editor
+│   ├── fzf/         # FZF configurazione avanzata
+│   ├── git/         # Git delta config
+│   ├── lazygit/     # Lazygit config
+│   ├── nano/        # Nano editor
+│   └── ripgrep/     # Ripgrep ignore patterns
 ├── helix/           # Helix editor config
 ├── htop/            # htop config
 ├── nnn/             # nnn file manager
 ├── scripts/         # Script utili
-│   └── clamav-manager.sh
+│   ├── clamav-manager.sh    # Gestione ClamAV
+│   └── dotfiles-health-check.sh # Health check sistema
 ├── setup/           # Script di setup
 │   └── setup_macos.zsh
 ├── ssh/             # SSH config (gitignored per sicurezza)
@@ -163,6 +168,30 @@ brew bundle --file=Brewfile
 - I file sensibili (SSH, 1Password) hanno permessi restrittivi automatici
 - ClamAV manager incluso per scansioni antivirus facili
 - Le configurazioni SSH sono gitignored di default
+
+## 🛠️ Script Utili
+
+### Health Check
+
+Verifica lo stato del sistema e delle configurazioni:
+
+```bash
+./scripts/dotfiles-health-check.sh
+```
+
+### ClamAV Manager
+
+Gestione avanzata dell'antivirus con quarantena e notifiche:
+
+```bash
+./scripts/clamav-manager.sh update     # Aggiorna definizioni
+./scripts/clamav-manager.sh quick      # Scansione rapida
+./scripts/clamav-manager.sh downloads  # Scansiona Downloads
+./scripts/clamav-manager.sh stats      # Mostra statistiche
+./scripts/clamav-manager.sh file <path> # Scansiona file singolo
+```
+
+📖 Consulta la [Guida Completa ClamAV](CLAMAV_GUIDE.md) per tutti i dettagli.
 
 ## 🐛 Troubleshooting
 

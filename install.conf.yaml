@@ -45,10 +45,6 @@
       path: op/config
       permissions: "600"
 
-    # Antivirus
-    ~/.config/clamav/clamd.conf: config/clamav/clamd.conf
-    ~/.config/clamav/freshclam.conf: config/clamav/freshclam.conf
-
     # VS Code
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
 

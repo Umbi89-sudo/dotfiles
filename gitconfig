@@ -7,7 +7,7 @@
 	email = 198199286+Umbi89-sudo@users.noreply.github.com
 
 [core]
-	editor = nano
+	editor = hx
 	autocrlf = input
 	whitespace = trailing-space,space-before-tab
 
