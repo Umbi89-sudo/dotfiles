@@ -70,6 +70,8 @@ brew "lazygit"
 brew "m-cli"
 # Mac App Store command-line interface
 brew "mas"
+# Fly through your shell history
+brew "mcfly"
 # 'traceroute' and 'ping' in a single tool
 brew "mtr"
 # NCurses Disk Usage
