@@ -510,3 +510,4 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+alias 1pm="~/1password-tools/1password-manager.sh"
